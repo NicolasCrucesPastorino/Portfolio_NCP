@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="javascript" href="./Formulario.js">
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+        /*
+        function guardar(){
+        let asunto = document.getElementById('asunto').value;
+        let mensaje = document.getElementById('mensaje').value;
+        console.log(asunto,mensaje); 
+         }
+          
+
+        /*
+        let email="nicolascruces0@gmail.com";
+
+        let email_address = email;
+        document.write("\n");
+
+        let mailto_link='mailto:'+email_address+'?subject='+asunto+'&body='+mensaje;
+        emailwin=window.open(mailto_link,'emailWin');
+        emailwin=window.close();
+        */
+        
+        
+ 
+        
+        (function(){
+            emailjs.init("AwKmhjd092j5IoaKy");
+        })();
+
+        function sendEmail(event) {
+            event.preventDefault();
+            console.log("aca");
+            emailjs.sendForm('service_x1acwr6', 'template_dxvu9od', event.target)
+                .then(function() {
+                    alert('Correo enviado exitosamente!');
+                }, function(error) {
+                    alert('Error al enviar el correo: ' + JSON.stringify(error));
+                });
+        }
+    </script>
+    <title>Contacto</title>
+</head>
+<body class="colorNegroBG">
+    <div class="big colorNegroBG paddingTop">    
+    <div class="content colorNaranjaBG small heightChica Block centrado sinMargenNiPadding">
+        <div>
+            <h2 class="sinMargenNiPadding">Contactate conmigo</h2>
+        </div>
+        <div class="contactoContainer">
+            <form class="contactoForm" onsubmit="sendEmail(event)">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+            <br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <br>
+            <label for="mensaje">Mensaje:</label>
+            <textarea id="mensaje" name="mensaje" required></textarea>
+            <br>
+            <button type="submit">Enviar</button>
+        </form>
+        </div>
+       
+        <!--
+       <p>Asunto:</p>
+        <input id="asunto" class="Width" type="text" placeholder="Asunto"> 
+        <p>Mensaje:</p>
+        <input id="mensaje" class="textWidthHeight" type="text" placeholder="Mensaje" >
+        <button id="boton" onclick="guardar()" class="Block centrado marginAuto" >Enviar</button>
+        -->
+    </div>
+    </div>
+    <footer>
+        <a class="colorNegroBG" href="./index.html"><h3 class="marginLeftPequenio colorNegroBG">Volver</h3></a>
+
+    </footer>
+    
+</body>
+</html>
+
+
+
